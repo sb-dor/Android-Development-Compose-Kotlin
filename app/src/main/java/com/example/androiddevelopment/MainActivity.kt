@@ -26,46 +26,46 @@ import kotlin.reflect.typeOf
 
 
 // for running code not UI
-fun main() {
-
-    creatingVariablesInKotlin()
-    mainFunctionCode()
-    val resultOfFunction =
-        happyBirthdayPrint(age = 21); // names parameters : give this func any parameter you want
-    println(resultOfFunction);
-
-
-    WhenStateMent()
-
-    val productOb =
-        Product(cQty = 5.0, qPrice = 10.5, cCategory = Category(cId = 1, cName = "Fruits"));
-
-    val totalOfProd = productOb.total();
-
-    val productCategory = productOb.getCategoryName();
-
-    println("total of prod is: $totalOfProd | category name: $productCategory");
-
-
-    val character: Character = RedSide("Avaz", M416(35));
-
-
-    character.fire();
-
-
-    //
-
-    val smartTelevision: SmartTelevision = LGTelevision("PANASONIC");
-
-    print("tvname: ${smartTelevision.nameOfTV}")
-
-    smartTelevision.switchOn()
-
-    smartTelevision.incrementChannel();
-
-    smartTelevision.decrementChannel();
-
-}
+//fun main() {
+//
+//    creatingVariablesInKotlin()
+//    mainFunctionCode()
+//    val resultOfFunction =
+//        happyBirthdayPrint(age = 21); // names parameters : give this func any parameter you want
+//    println(resultOfFunction);
+//
+//
+//    WhenStateMent()
+//
+//    val productOb =
+//        Product(cQty = 5.0, qPrice = 10.5, cCategory = Category(cId = 1, cName = "Fruits"));
+//
+//    val totalOfProd = productOb.total();
+//
+//    val productCategory = productOb.getCategoryName();
+//
+//    println("total of prod is: $totalOfProd | category name: $productCategory");
+//
+//
+//    val character: Character = RedSide("Avaz", M416(35));
+//
+//
+//    character.fire();
+//
+//
+//    //
+//
+//    val smartTelevision: SmartTelevision = LGTelevision("PANASONIC");
+//
+//    print("tvname: ${smartTelevision.nameOfTV}")
+//
+//    smartTelevision.switchOn()
+//
+//    smartTelevision.incrementChannel();
+//
+//    smartTelevision.decrementChannel();
+//
+//}
 
 
 class MainActivity : ComponentActivity() {
