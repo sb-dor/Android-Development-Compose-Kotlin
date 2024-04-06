@@ -1,1 +1,1 @@
-https://developer.android.com/courses/android-basics-compose/course
+https://developer.android.com/courses/pathways/android-basics-compose-unit-3-pathway-3
