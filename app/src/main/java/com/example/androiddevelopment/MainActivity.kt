@@ -17,6 +17,7 @@ import com.example.androiddevelopment.business_card_app.BusinessCardApp
 import com.example.androiddevelopment.compose_about_app.ComposeAboutApp
 import com.example.androiddevelopment.functions.happyBirthdayPrint
 import com.example.androiddevelopment.happy_birthday_ui.HappyBirthdayUi
+import com.example.androiddevelopment.state_changing.StateChangingComposable
 import com.example.androiddevelopment.ui.theme.AndroidDevelopmentTheme
 import com.example.androiddevelopment.variables.creatingVariablesInKotlin
 
@@ -42,7 +43,8 @@ class MainActivity : ComponentActivity() {
                 ) {
 //                    HappyBirthdayUi(message = "Avazsho", from = "Angular")
 //                    ComposeAboutApp()
-                    BusinessCardApp()
+//                    BusinessCardApp()
+                    StateChangingComposable()
                 }
             }
         }
