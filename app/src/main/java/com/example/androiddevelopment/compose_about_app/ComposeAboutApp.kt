@@ -42,9 +42,11 @@ fun ComposeAboutApp() {
 
         LazyColumn {
             item {
-                Box(modifier = Modifier
-                    .fillMaxWidth()
-                    .height(150.dp)) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(150.dp)
+                ) {
                     ComposeImage()
                 }
                 Box(modifier = Modifier.height(10.dp))
@@ -65,7 +67,7 @@ fun ComposeAboutApp() {
 }
 
 @Composable
-fun ComposeImage() {
+private fun ComposeImage() {
     return Image(
         painter = painterResource(id = R.drawable.bg_compose_background),
         contentScale = ContentScale.Crop,

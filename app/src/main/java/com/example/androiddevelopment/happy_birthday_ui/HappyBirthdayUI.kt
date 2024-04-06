@@ -72,7 +72,7 @@ fun HappyBirthdayUi(message: String? = null, from: String? = null) {
 }
 
 @Composable
-fun ImageBackground(imagePath: Int, modifier: Modifier) {
+private fun ImageBackground(imagePath: Int, modifier: Modifier) {
     Image(
         modifier = modifier,
         painter = painterResource(id = imagePath),

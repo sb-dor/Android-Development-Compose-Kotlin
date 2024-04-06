@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.androiddevelopment.business_card_app.BusinessCardApp
 import com.example.androiddevelopment.compose_about_app.ComposeAboutApp
 import com.example.androiddevelopment.functions.happyBirthdayPrint
 import com.example.androiddevelopment.happy_birthday_ui.HappyBirthdayUi
@@ -37,11 +38,11 @@ class MainActivity : ComponentActivity() {
             AndroidDevelopmentTheme(darkTheme = true) {
                 // A surface container using the 'background' color from the theme
                 Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
+                    modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background
                 ) {
 //                    HappyBirthdayUi(message = "Avazsho", from = "Angular")
-                    ComposeAboutApp()
+//                    ComposeAboutApp()
+                    BusinessCardApp()
                 }
             }
         }
