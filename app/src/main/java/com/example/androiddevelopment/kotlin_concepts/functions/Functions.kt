@@ -1,4 +1,4 @@
-package com.example.androiddevelopment.functions
+package com.example.androiddevelopment.kotlin_concepts.functions
 
 // function that can return null or String
 fun happyBirthdayPrint(nameOfPerson: String? = null, age: Int = 0): String {
