@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.androiddevelopment.app_architechture.ui.AppArchitecture
+import com.example.androiddevelopment.app_architechture_viewmodel.ui.pages.AppArchitectureViewModelPage
 import com.example.androiddevelopment.kotlin_concepts.functions.happyBirthdayPrint
 import com.example.androiddevelopment.kotlin_concepts.oop.Category
 import com.example.androiddevelopment.kotlin_concepts.oop.Product
@@ -84,7 +85,8 @@ class MainActivity : ComponentActivity() {
 //                    ComposeAboutApp()
 //                    BusinessCardApp()
 //                    StateChangingComposable()
-                    AppArchitecture()
+//                    AppArchitecture()
+                    AppArchitectureViewModelPage()
                 }
             }
         }

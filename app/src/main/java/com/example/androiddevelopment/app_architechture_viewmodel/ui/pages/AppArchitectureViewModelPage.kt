@@ -1,4 +1,4 @@
-package com.example.androiddevelopment.app_architechture.ui
+package com.example.androiddevelopment.app_architechture_viewmodel.ui.pages
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
@@ -17,49 +17,36 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults.topAppBarColors
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.androiddevelopment.R
-import com.example.androiddevelopment.app_architechture.data.DataSource
-import com.example.androiddevelopment.app_architechture.model.Dessert
-import kotlin.random.Random
+import com.example.androiddevelopment.app_architechture_viewmodel.ui.view_model.AppArchitectureViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AppArchitecture() {
+fun AppArchitectureViewModelPage(viewModel: AppArchitectureViewModel = viewModel()) {
 
 
-    val listOfDessert = remember {
-        mutableStateListOf<Dessert>()
-    }
-
-    val tempDessert = remember {
-        mutableStateOf<Dessert?>(null);
-    }
-
-    fun addToList() {
-        if (tempDessert.value == null) return;
-        listOfDessert.add(tempDessert.value!!);
-    }
-
-    tempDessert.value = generateRandom();
+    val currentState by viewModel.uiState;
 
     Scaffold(topBar = {
         TopAppBar(
-            title = { Text(text = "App Architecture") }, colors = topAppBarColors(
+            title = { Text(text = stringResource(R.string.app_architecture_viewmodel)) },
+            colors = TopAppBarDefaults.topAppBarColors(
                 containerColor = Color.DarkGray
             )
         )
     }, floatingActionButton = {
-        FloatingActionButton(onClick = { tempDessert.value = generateRandom() }) {
+        FloatingActionButton(onClick = { viewModel.generateRandom() }) {
             Icon(Icons.Rounded.ArrowForward, contentDescription = "No DESC")
         }
     })
@@ -78,36 +65,25 @@ fun AppArchitecture() {
                 ) {
                     Image(
                         painter = painterResource(
-                            id = tempDessert.value?.imageId ?: R.drawable.cupcake
+                            id = currentState.tempDessert?.imageId ?: R.drawable.cupcake
                         ), contentDescription = null
                     )
                 }
                 Box(modifier = Modifier.height(10.dp))
-                Text(text = "Price: ${tempDessert.value?.price ?: 0}", color = Color.White)
+                Text(
+                    text = "Price: ${currentState.tempDessert?.price ?: 0}",
+                    color = Color.White
+                )
                 Box(modifier = Modifier.height(10.dp))
-                OutlinedButton(onClick = { addToList() }) {
+                OutlinedButton(onClick = { viewModel.addToList() }) {
                     Icon(Icons.Rounded.Add, contentDescription = null)
                 }
 
                 Box(modifier = Modifier.height(10.dp))
 
-                Text(text = "Total: ${getTotal(listOfDessert.toList())}", color = Color.White)
+                Text(text = "Total: ${viewModel.getTotal()}", color = Color.White)
             }
         }
 
     }
-}
-
-
-private fun generateRandom(): Dessert {
-    val random = Random.nextInt(0, DataSource.listOfDesserts.count());
-    return DataSource.listOfDesserts[random];
-}
-
-fun getTotal(list: List<Dessert>): Int {
-    var total = 0;
-    for (n in list) {
-        total += n.price;
-    }
-    return total;
 }
