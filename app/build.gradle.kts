@@ -73,4 +73,7 @@ dependencies {
 
     implementation("androidx.navigation:navigation-compose:2.7.7") // put this navigation in the end
 
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9") // for making async functions
+
+
 }

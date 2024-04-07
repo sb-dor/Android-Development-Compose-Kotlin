@@ -26,50 +26,116 @@ import com.example.androiddevelopment.state_changing.StateChangingComposable
 import com.example.androiddevelopment.ui.theme.AndroidDevelopmentTheme
 import com.example.androiddevelopment.kotlin_concepts.variables.creatingVariablesInKotlin
 import com.example.androiddevelopment.navigation.Navigation
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.async
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import kotlin.reflect.typeOf
 
 
 // for running code not UI
-//fun main() {
-//
-//    creatingVariablesInKotlin()
-//    mainFunctionCode()
-//    val resultOfFunction =
-//        happyBirthdayPrint(age = 21); // names parameters : give this func any parameter you want
-//    println(resultOfFunction);
-//
-//
-//    WhenStateMent()
-//
-//    val productOb =
-//        Product(cQty = 5.0, qPrice = 10.5, cCategory = Category(cId = 1, cName = "Fruits"));
-//
-//    val totalOfProd = productOb.total();
-//
-//    val productCategory = productOb.getCategoryName();
-//
-//    println("total of prod is: $totalOfProd | category name: $productCategory");
-//
-//
-//    val character: Character = RedSide("Avaz", M416(35));
-//
-//
-//    character.fire();
-//
-//
-//    //
-//
-//    val smartTelevision: SmartTelevision = LGTelevision("PANASONIC");
-//
-//    print("tvname: ${smartTelevision.nameOfTV}")
-//
-//    smartTelevision.switchOn()
-//
-//    smartTelevision.incrementChannel();
-//
-//    smartTelevision.decrementChannel();
-//
-//}
+fun main() {
+
+    creatingVariablesInKotlin()
+    mainFunctionCode()
+    val resultOfFunction =
+        happyBirthdayPrint(age = 21); // names parameters : give this func any parameter you want
+    println(resultOfFunction);
+
+
+    WhenStateMent()
+
+    val productOb =
+        Product(cQty = 5.0, qPrice = 10.5, cCategory = Category(cId = 1, cName = "Fruits"));
+
+    val totalOfProd = productOb.total();
+
+    val productCategory = productOb.getCategoryName();
+
+    println("total of prod is: $totalOfProd | category name: $productCategory");
+
+
+    val character: Character = RedSide("Avaz", M416(35));
+
+
+    character.fire();
+
+
+    //
+
+    val smartTelevision: SmartTelevision = LGTelevision("PANASONIC");
+
+    print("tvname: ${smartTelevision.nameOfTV}")
+
+    smartTelevision.switchOn()
+
+    smartTelevision.incrementChannel();
+
+    smartTelevision.decrementChannel();
+
+
+    // suspend functions is look like Dart's Future functions, meaning that function will done its work in the future
+
+    // that is why we need "coroutines" in Kotlin in order to run suspend functions
+
+    // "runBlocking" runs code like using "async" in Dart
+
+    runBlocking {
+        printForeCast()
+
+        printTemperature()
+    }
+
+    // but what if you want to run code "concurrency!" at the same time ?
+
+    // for running several "suspend" function at same time use launch method of coroutine's package
+    runBlocking {
+        launch {
+            printWhatTheDart()
+        }
+        launch {
+            printWhatTheFlutter()
+        }
+
+        // like Future -> async (Deferred is like Future)
+        val gettingSomething: Deferred<String> = async { somethingInTheFuture(); }
+
+        // then fun await function
+        val value = gettingSomething.await()
+
+        println(value)
+
+        //
+    }
+}
+
+
+suspend fun printForeCast() {
+    delay(1000)
+    println("sunny");
+}
+
+suspend fun printTemperature() {
+    delay(1000)
+    println("infinite degrees")
+}
+
+suspend fun printWhatTheDart() {
+    delay(1000)
+    println("What the dart")
+}
+
+suspend fun printWhatTheFlutter() {
+    delay(1000)
+    println("what the flutter?")
+}
+
+
+suspend fun somethingInTheFuture(): String {
+    delay(2000)
+    return "get your something";
+}
 
 
 class MainActivity : ComponentActivity() {
