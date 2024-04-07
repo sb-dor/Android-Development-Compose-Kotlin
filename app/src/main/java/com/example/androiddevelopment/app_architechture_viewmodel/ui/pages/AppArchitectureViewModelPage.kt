@@ -36,7 +36,8 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 fun AppArchitectureViewModelPage(viewModel: AppArchitectureViewModel = viewModel()) {
 
 
-    val currentState by viewModel.uiState;
+    val gameUiState by viewModel.uiState.collectAsState()
+
 
     Scaffold(topBar = {
         TopAppBar(
@@ -65,13 +66,13 @@ fun AppArchitectureViewModelPage(viewModel: AppArchitectureViewModel = viewModel
                 ) {
                     Image(
                         painter = painterResource(
-                            id = currentState.tempDessert?.imageId ?: R.drawable.cupcake
+                            id = gameUiState.tempDessert?.imageId ?: R.drawable.cupcake
                         ), contentDescription = null
                     )
                 }
                 Box(modifier = Modifier.height(10.dp))
                 Text(
-                    text = "Price: ${currentState.tempDessert?.price ?: 0}",
+                    text = "Price: ${gameUiState.tempDessert?.price ?: 0}",
                     color = Color.White
                 )
                 Box(modifier = Modifier.height(10.dp))

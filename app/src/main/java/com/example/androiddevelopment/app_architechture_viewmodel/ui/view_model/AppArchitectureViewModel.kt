@@ -6,11 +6,16 @@ import androidx.lifecycle.ViewModel
 import com.example.androiddevelopment.app_architechture.data.DataSource
 import com.example.androiddevelopment.app_architechture.model.Dessert
 import com.example.androiddevelopment.app_architechture_viewmodel.data_layer.AppArchitectureViewModelData
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlin.random.Random
 
 class AppArchitectureViewModel : ViewModel() {
 
-    val uiState = mutableStateOf(AppArchitectureViewModelData())
+    val _uiState = MutableStateFlow(AppArchitectureViewModelData())
+    val uiState: StateFlow<AppArchitectureViewModelData> = _uiState.asStateFlow()
 
 
     init {
@@ -20,7 +25,7 @@ class AppArchitectureViewModel : ViewModel() {
     fun generateRandom() {
         val random = Random.nextInt(0, DataSource.listOfDesserts.size);
         val tempValue = DataSource.listOfDesserts[random];
-        uiState.value = uiState.value.copy(tempDessert = tempValue);
+        _uiState.update { currentState -> currentState.copy(tempDessert = tempValue) };
     }
 
     fun getTotal(): Int {
@@ -34,7 +39,7 @@ class AppArchitectureViewModel : ViewModel() {
     fun addToList() {
         if (uiState.value.tempDessert == null) return;
         uiState.value.dessert.add(uiState.value.tempDessert!!)
-        uiState.value = uiState.value.copy(dessert = uiState.value.dessert)
+        _uiState.update { currentState -> currentState.copy(dessert = uiState.value.dessert) }
     }
 
 }
