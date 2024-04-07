@@ -98,7 +98,9 @@ fun main() {
             printWhatTheFlutter()
         }
 
-        // like Future -> async (Deferred is like Future)
+        // like Future -> async (suspend and Deferred are like Future)
+
+        // in order to get awaited data use "Deferred<T>" annotation and "suspend" function like this:
         val gettingSomething: Deferred<String> = async { somethingInTheFuture(); }
 
         // then fun await function
@@ -138,6 +140,20 @@ suspend fun somethingInTheFuture(): String {
 }
 
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+// main UI
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
