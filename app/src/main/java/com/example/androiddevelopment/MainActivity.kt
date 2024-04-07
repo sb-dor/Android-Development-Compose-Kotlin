@@ -25,6 +25,7 @@ import com.example.androiddevelopment.kotlin_concepts.when_statement.WhenStateMe
 import com.example.androiddevelopment.state_changing.StateChangingComposable
 import com.example.androiddevelopment.ui.theme.AndroidDevelopmentTheme
 import com.example.androiddevelopment.kotlin_concepts.variables.creatingVariablesInKotlin
+import com.example.androiddevelopment.navigation.Navigation
 import kotlin.reflect.typeOf
 
 
@@ -86,7 +87,8 @@ class MainActivity : ComponentActivity() {
 //                    BusinessCardApp()
 //                    StateChangingComposable()
 //                    AppArchitecture()
-                    AppArchitectureViewModelPage()
+//                    AppArchitectureViewModelPage()
+                    Navigation()
                 }
             }
         }

@@ -14,7 +14,7 @@ import kotlin.random.Random
 
 class AppArchitectureViewModel : ViewModel() {
 
-    val _uiState = MutableStateFlow(AppArchitectureViewModelData())
+    private val _uiState = MutableStateFlow(AppArchitectureViewModelData())
     val uiState: StateFlow<AppArchitectureViewModelData> = _uiState.asStateFlow()
 
 
