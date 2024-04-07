@@ -18,14 +18,17 @@ import androidx.navigation.NavHostController
 @Composable
 fun SecondNavigationComposableScreen(
     paddingValues: PaddingValues,
-    navigationController: NavHostController
+    navigationController: NavHostController,
+    argName: String? = null
 ) {
+
+
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         Column(
             modifier = Modifier.padding(paddingValues),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(text = "Second screen", textAlign = TextAlign.Center, color = Color.White)
+            Text(text = "Second screen -> $argName", textAlign = TextAlign.Center, color = Color.White)
             ElevatedButton(onClick = {
 
                 navigationController.popBackStack();

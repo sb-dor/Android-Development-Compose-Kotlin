@@ -28,7 +28,7 @@ fun FirstNavigationComposable(
             Text(text = "First screen", textAlign = TextAlign.Center, color = Color.White)
             ElevatedButton(onClick = {
 
-                navigationController.navigate(Screens.SecondScreen.name)
+                navigationController.navigate(Screens.SecondScreen.name + "/Avaz")
 
 
             }) {

@@ -14,9 +14,11 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 
 
 enum class Screens {
@@ -42,16 +44,32 @@ fun Navigation() {
 
 @Composable
 private fun NavigationSettings(
-    paddingValues: PaddingValues,
-    navigationController: NavHostController
+    paddingValues: PaddingValues, navigationController: NavHostController
 ) {
 
+    // but I think that sending data through navigation with arguments is not the right way
+
+    // do it with ViewModel instead
+
     NavHost(navController = navigationController, startDestination = Screens.FirstScreen.name) {
-        composable(route = Screens.FirstScreen.name) {
+        composable(
+            route = Screens.FirstScreen.name,
+
+            ) {
             FirstNavigationComposable(paddingValues, navigationController)
         }
-        composable(route = Screens.SecondScreen.name) {
-            SecondNavigationComposableScreen(paddingValues, navigationController)
+        composable(
+            route = Screens.SecondScreen.name + "/{name}",
+            arguments = listOf(navArgument("name") {
+                type = NavType.StringType // type of getting data
+                defaultValue = "Hello"
+                nullable = true
+            })
+        ) { path ->
+
+            var args = path.arguments?.getString("name");
+
+            SecondNavigationComposableScreen(paddingValues, navigationController, args)
         }
     }
 }
