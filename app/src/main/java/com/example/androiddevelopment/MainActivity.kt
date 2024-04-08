@@ -114,6 +114,7 @@ fun main() {
         //
         runBlocking {
             RetrofitWorking.makeRequest();
+            RetrofitWorking.makeKorgerReq();
         }
     }
 }
