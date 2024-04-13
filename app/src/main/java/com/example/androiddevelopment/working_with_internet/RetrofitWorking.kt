@@ -4,6 +4,7 @@ package com.example.androiddevelopment.working_with_internet
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Headers
 import retrofit2.http.Path
 import retrofit2.http.Query
 
@@ -13,6 +14,8 @@ interface ApiService {
     @GET("posts/{postId}/comments")
     suspend fun getComments(@Path("postId") postId: Int): List<CommentModelModel>
 
+
+    @Headers("Accept: application/json", "Authorization : Bearer Token")
     @GET("priceslist/")      // query key is for setting parameters
     suspend fun getKorgarData(@Query("key") key: String): Any
 }

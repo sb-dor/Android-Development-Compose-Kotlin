@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.androiddevelopment.app_architechture.ui.AppArchitecture
 import com.example.androiddevelopment.app_architechture_viewmodel.ui.pages.AppArchitectureViewModelPage
+import com.example.androiddevelopment.database.presentation.pages.LocalDatabasePage
 import com.example.androiddevelopment.kotlin_concepts.functions.happyBirthdayPrint
 import com.example.androiddevelopment.kotlin_concepts.oop.Category
 import com.example.androiddevelopment.kotlin_concepts.oop.Product
@@ -36,88 +37,88 @@ import kotlin.reflect.typeOf
 
 
 // for running code not UI
-fun main() {
-
-    creatingVariablesInKotlin()
-    mainFunctionCode()
-    val resultOfFunction =
-        happyBirthdayPrint(age = 21); // names parameters : give this func any parameter you want
-    println(resultOfFunction);
-
-
-    WhenStateMent()
-
-    val productOb =
-        Product(cQty = 5.0, qPrice = 10.5, cCategory = Category(cId = 1, cName = "Fruits"));
-
-    val totalOfProd = productOb.total();
-
-    val productCategory = productOb.getCategoryName();
-
-    println("total of prod is: $totalOfProd | category name: $productCategory");
-
-
-    val character: Character = RedSide("Avaz", M416(35));
-
-
-    character.fire();
-
-
-    //
-
-    val smartTelevision: SmartTelevision = LGTelevision("PANASONIC");
-
-    print("tvname: ${smartTelevision.nameOfTV}")
-
-    smartTelevision.switchOn()
-
-    smartTelevision.incrementChannel();
-
-    smartTelevision.decrementChannel();
-
-
-    // suspend functions is look like Dart's Future functions, meaning that function will done its work in the future
-
-    // that is why we need "coroutines" in Kotlin in order to run suspend functions
-
-    // "runBlocking" runs code like using "async" in Dart
-
-    runBlocking {
-        printForeCast()
-
-        printTemperature()
-    }
-
-    // but what if you want to run code "concurrency!" at the same time ?
-
-    // for running several "suspend" function at same time use launch method of coroutine's package
-    runBlocking {
-        launch {
-            printWhatTheDart()
-        }
-        launch {
-            printWhatTheFlutter()
-        }
-
-        // like Future -> async (suspend and Deferred are like Future)
-
-        // in order to get awaited data use "Deferred<T>" annotation and "suspend" function like this:
-        val gettingSomething: Deferred<String> = async { somethingInTheFuture(); }
-
-        // then fun await function
-        val value = gettingSomething.await()
-
-        println(value)
-
-        //
-
-        //
-        runBlocking {
-            RetrofitWorking.makeRequest();
-            RetrofitWorking.makeKorgerReq();
-        }
-    }
-}
+//fun main() {
+//
+//    creatingVariablesInKotlin()
+//    mainFunctionCode()
+//    val resultOfFunction =
+//        happyBirthdayPrint(age = 21); // names parameters : give this func any parameter you want
+//    println(resultOfFunction);
+//
+//
+//    WhenStateMent()
+//
+//    val productOb =
+//        Product(cQty = 5.0, qPrice = 10.5, cCategory = Category(cId = 1, cName = "Fruits"));
+//
+//    val totalOfProd = productOb.total();
+//
+//    val productCategory = productOb.getCategoryName();
+//
+//    println("total of prod is: $totalOfProd | category name: $productCategory");
+//
+//
+//    val character: Character = RedSide("Avaz", M416(35));
+//
+//
+//    character.fire();
+//
+//
+//    //
+//
+//    val smartTelevision: SmartTelevision = LGTelevision("PANASONIC");
+//
+//    print("tvname: ${smartTelevision.nameOfTV}")
+//
+//    smartTelevision.switchOn()
+//
+//    smartTelevision.incrementChannel();
+//
+//    smartTelevision.decrementChannel();
+//
+//
+//    // suspend functions is look like Dart's Future functions, meaning that function will done its work in the future
+//
+//    // that is why we need "coroutines" in Kotlin in order to run suspend functions
+//
+//    // "runBlocking" runs code like using "async" in Dart
+//
+//    runBlocking {
+//        printForeCast()
+//
+//        printTemperature()
+//    }
+//
+//    // but what if you want to run code "concurrency!" at the same time ?
+//
+//    // for running several "suspend" function at same time use launch method of coroutine's package
+//    runBlocking {
+//        launch {
+//            printWhatTheDart()
+//        }
+//        launch {
+//            printWhatTheFlutter()
+//        }
+//
+//        // like Future -> async (suspend and Deferred are like Future)
+//
+//        // in order to get awaited data use "Deferred<T>" annotation and "suspend" function like this:
+//        val gettingSomething: Deferred<String> = async { somethingInTheFuture(); }
+//
+//        // then fun await function
+//        val value = gettingSomething.await()
+//
+//        println(value)
+//
+//        //
+//
+//        //
+//        runBlocking {
+//            RetrofitWorking.makeRequest();
+//            RetrofitWorking.makeKorgerReq();
+//        }
+//    }
+//}
 
 
 suspend fun printForeCast() {
@@ -177,7 +178,8 @@ class MainActivity : ComponentActivity() {
 //                    StateChangingComposable()
 //                    AppArchitecture()
 //                    AppArchitectureViewModelPage()
-                    Navigation()
+//                    Navigation()
+                    LocalDatabasePage()
                 }
             }
         }
